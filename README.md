@@ -1,64 +1,82 @@
-# AI Experts Assignment (Python)
+# AI Software Engineer Assignment - Python HTTP Client
 
-This assignment evaluates your ability to:
+## Overview
 
-- set up a small Python project to run reliably (locally + in Docker),
-- pin dependencies for reproducible installs,
-- write focused tests to reproduce a bug,
-- implement a minimal, reviewable fix.
+This repository showcases a basic HTTP client with an integrated OAuth2 token handling mechanism. It includes a test suite designed to highlight and address a specific bug related to token refresh. The emphasis is on demonstrating a clear setup, targeted testing, and a concise, easily reviewable solution.
 
-## What you will do
+## Project Structure
 
-### 1) Dockerfile (required)
+.
+├── app/
+│ ├── http_client.py # The HTTP client implementation
+│ └── tokens.py # OAuth2 token management logic
+├── tests/
+│ ├── conftest.py # Pytest configuration file
+│ └── test_http_client.py # Test suite for the HTTP client
+├── requirements.txt # Project dependencies
+├── Dockerfile # Docker configuration for reproducible testing
+├── Explanation.md # Detailed explanation of the bug and its fix
+└── README.md # This file
 
-Create a `Dockerfile` so the project can run the test suite in a non-interactive, CI-style environment.
+## Requirements
 
-Requirements:
+- Python 3.12+
+- pip
 
-- requirements.txt exists and is used during build (pip install -r requirements.txt)
-- pytest must be included/pinned in requirements.txt
-- The image must run tests by default (use: `CMD ["python", "-m", "pytest", "-v"]`).
-- The build must install dependencies from `requirements.txt`.
+## Installation
 
-### 2) requirements.txt (required)
+### Local Setup
 
-Create a `requirements.txt` with pinned versions, using this format:
+Navigate to the project root directory in your terminal and run:
 
-- `package==x.y.z`
+```bash
+pip install -r requirements.txt
+```
 
-### 3) README updates (required)
+### Run Tests Locally
 
-Update this README to include:
+From the project root:
 
-- how to run the tests locally,
-- how to build and run tests with Docker.
+```bash
+pytest -v
+```
 
-### 4) Find + fix a bug (required)
+This runs the full test suite and verifies the OAuth2 behavior and bug fix.
 
-There is a bug somewhere in this repository.
+### Run Tests Using Docker
 
-Your tasks:
+Build the Docker image
 
-- Identify the bug.
-- Apply the smallest possible fix to make the tests pass.
-- Keep the change minimal and reviewable (no refactors).
+```bash
+docker build -t ai-assignment .
+```
 
-## Constraints
+Run the container
 
-- Keep changes minimal and reviewable.
-- Do not refactor unrelated code.
-- Do not introduce extra tooling unless required.
-- You may add tests and the smallest code change needed to fix the bug.
+```bash
+docker run --rm ai-assignment
+```
 
-### 5) EXPLANATION.md (required)
+The container automatically runs:
 
-Create `EXPLANATION.md` (max 250 words) containing:
+pytest -v
 
-- **What was the bug?**
-- **Why did it happen?**
-- **Why does your fix solve it?**
-- **One realistic case / edge case your tests still don’t cover**
+This simulates a clean CI-style environment.
 
-## Submission
+### Notes
 
-- Submit a public GitHub repository URL containing your solution to the Google form link provided.
+- Dependencies are pinned for reproducibility.
+
+- Docker ensures tests run consistently across environments.
+
+- The bug fix is minimal and covered by focused tests.
+
+### Author Checklist
+
+- Tests run locally
+
+- Docker build succeeds
+
+- Tests pass inside Docker
+
+- Explanation.md documents the bug and fix
