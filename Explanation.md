@@ -15,7 +15,7 @@ The test case using a dictionary token exposed this issue.
 
 The original code attempted to check expiration like this:
 
-````python
+`````python
 if isinstance(self.oauth2_token, OAuth2Token) and self.oauth2_token.expired:
     self.refresh_oauth2()
 
@@ -24,10 +24,9 @@ if isinstance(self.oauth2_token, OAuth2Token) and self.oauth2_token.expired:
 
 The condition was updated to:
 
-```python
+````python
 if not isinstance(self.oauth2_token, OAuth2Token) or self.oauth2_token.expired:
     self.refresh_oauth2()
-
 
 This ensures refresh occurs only when:
 
@@ -42,9 +41,8 @@ All tests now pass:
 - missing tokens are refreshed,
 - invalid tokens are refreshed safely.
 
----
 
 ## Remaining edge case not covered
 
 The tests do not simulate a token expiring during a request (e.g., clock skew or near-expiry timing). In real systems, a safety buffer is often used to refresh slightly early. This timing-related edge case is outside the scope of the current tests.
-````
+`````
