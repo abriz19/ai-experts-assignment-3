@@ -6,16 +6,15 @@ This repository showcases a basic HTTP client with an integrated OAuth2 token ha
 
 ## Project Structure
 
-.
-├── app/
-│ ├── http_client.py # The HTTP client implementation
-│ └── tokens.py # OAuth2 token management logic
-├── tests/
-│ ├── conftest.py # Pytest configuration file
-│ └── test_http_client.py # Test suite for the HTTP client
-├── requirements.txt # Project dependencies
-├── Dockerfile # Docker configuration for reproducible testing
-├── Explanation.md # Detailed explanation of the bug and its fix
+├── app/  
+│ ├── http_client.py # The HTTP client implementation  
+│ └── tokens.py # OAuth2 token management logic  
+├── tests/  
+│ ├── conftest.py # Pytest configuration file  
+│ └── test_http_client.py # Test suite for the HTTP client  
+├── requirements.txt # Project dependencies  
+├── Dockerfile # Docker configuration for reproducible testing  
+├── Explanation.md # Detailed explanation of the bug and its fix  
 └── README.md # This file
 
 ## Requirements
